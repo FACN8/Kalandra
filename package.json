@@ -1,0 +1,32 @@
+{
+  "name": "Kalandra",
+  "version": "1.0.0",
+  "description": "Events Calender for Founders and Coders",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN8/Kalandra.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN8/Kalandra/issues"
+  },
+  "homepage": "https://github.com/FACN8/Kalandra#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pg": "^7.18.1"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2",
+    "tape": "^4.13.0"
+  }
+}
