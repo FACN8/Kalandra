@@ -3,10 +3,11 @@ Events Calender for Founders and Coders
 
 ## Project
 
+We started our project by setting up the file structure, later on we started defining minimum viable product, while reading together the requirement and creating issues based on groupthinking. we then started imagining and defining front end side. and later on we made a diagram out of the databses.
+https://dbdiagram.io/d/5e3961ff9e76504e0ef102cf
+
+
 This week's project will involve setting up a database which you connect to via a node.js server. You'll use your data to make a dynamic web app for your front-end.
-
-Some suggested project ideas are below. Feel free to modify according to your interest, provided your idea has similar functionality.
-
 
 ### Requirements
 
