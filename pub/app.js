@@ -16,12 +16,21 @@ const searchEvents = (event) => {
     const url = '/search?term=' + form.childNodes[1].value;
 
     fetchData(url, (error, response) => {
-        if (error /*|| no data*/) {
+        let arrayResults = JSON.parse(response); //CHECK THIS
+
+        if (error || arrayResults.length === 0) {
             form.childNodes[1].value = '';
             alert('No results found');
             return;
         }
+
         //Populate DOM with reponse object...
+        //id
+        //title
+        //pic (IMAGE URL)
+        //date
+        //descr
+        
     });
 };
 

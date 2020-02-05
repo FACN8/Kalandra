@@ -1,4 +1,4 @@
-getEvents(cb)
+/*getEvents(cb)
 
 getComments(cb)
 getReviews(cb)
@@ -9,4 +9,4 @@ module.exports = {
     getComments,
     getReviews,
     getRegister
-};
+};*/

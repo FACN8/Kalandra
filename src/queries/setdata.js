@@ -1,5 +1,5 @@
 
-const setEvent = (title, pic, date, descr, cb) => {
+/*const setEvent = (title, pic, date, descr, cb) => {
 
 }
 
@@ -23,4 +23,4 @@ module.exports = {
     setComment,
     setReview,
     setRegister
-};
+};*/

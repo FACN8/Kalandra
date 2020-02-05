@@ -1,58 +1,52 @@
-// public handler, error handler, create event, get events handler, register handler (for event),review and comment handler
 const { readFile } = require('fs');
 const path = require('path');
 const qs = require('qs');
 
+/*const getData = require('./queries/getdata.js');
 
-const {
-    getEvents,
-    getComments,
-    getReviews,
-    getRegister
-} = require('./queries/getdata.js');
+const setData = require('./queries/setData.js');*/
 
-const {
-    setEvent,
-    setComment,
-    setReview,
-    setRegister
-   } = require('./queries/setData.js');
+const extensionType = {
+    html: { "Content-Type": "text/html" },
+    css: { "Content-Type": "text/css" },
+    js: { "Content-Type": "application/javascript" },
+    png: { "Content-Type": "image/png" },
+    jpg: { "Content-Type": "image/jpg" },
+    ico: { "Content-Type": "image/x-icon" },
+    json: { "Content-Type": "application/json" },
+    text: { "Content-Type": "text/plain" }
+  };
 
 const serverError = (err, response) => {
-    response.writeHead(500, 'Content-Type:text/html');
+    response.writeHead(500, extensionType[html]);
     response.end('<h1>Sorry, there was a problem loading the homepage</h1>');
     console.log(err);
 };
 
-const publicHandler = (url, response) => {
-    const filepath = path.join(__dirname, '..', url);
-    readFile(filepath, (err, file) => {
-        if (err) return serverError(err, response);
-        const [, extension] = url.split('.');
-        const extensionType = {
-            html: 'text/html',
-            css: 'text/css',
-            js: 'application/javascript',
-            ico: 'image/x-icon',
-            jpg: 'image/jpg',
-            png: 'image/png',
-            jpeg: 'image/jpeg'
-        };
-        response.writeHead(200, { 'content-type': extensionType[extension] });
+const publicHandler = (request, response) => {
+    const filepath = path.join(__dirname, "..", request.url);
+    const fileExt = filepath.split(".")[1];
+
+    readFile(filepath, (error, file) => {
+        if (error) return serverError(error, response);
+
+        response.writeHead(200, extensionType[fileExt]);
         response.end(file);
     });
 };
 
+const searchHandler = (request, response) => {
+    //get search term, return object of relevant results
+    const term = request.url.split('=')[1];
 
-const homeHandler = response => {
-    const filepath = path.join(__dirname, '..', 'public', 'index.html');
-    readFile(filepath, (err, file) => {
-        if (err) return serverError(err, response);
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.end(file);
+    getData.search(term, (error, result) => {
+        if (error) new serverError(error, response);
+
+        response.writeHead(200, extensionType[json]);
+        response.end(JSON.stringify(result));
     });
 };
-
+/*
 const createEventHandler = (request, response) => {
     let data = '';
     request.on('data', chunk => {
@@ -68,14 +62,13 @@ const createEventHandler = (request, response) => {
     });
 };
 
-const  getEventsHandler = response => {
+const getEventsHandler = response => {
     getEvents((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
     });
 };
-
 
 const registerHandler = (request, response) => {
     let data = '';
@@ -92,7 +85,7 @@ const registerHandler = (request, response) => {
     });
 };
 
-const  getRegisterHandler = response => {
+const getRegisterHandler = response => {
     getRegister((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
@@ -115,14 +108,13 @@ const createCommentHandler = (request, response) => {
     });
 };
 
-const  getCommentsHandler = response => {
+const getCommentsHandler = response => {
     getComments((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
     });
 };
-
 
 const createReviewHandler = (request, response) => {
     let data = '';
@@ -139,15 +131,13 @@ const createReviewHandler = (request, response) => {
     });
 };
 
-const  getReviewsHandler = response => {
+const getReviewsHandler = response => {
     getReviews((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
     });
-};
-
-
+};*/
 
 const errorHandler = response => {
     response.writeHead(404, { 'content-type': 'text/html' });
@@ -156,14 +146,14 @@ const errorHandler = response => {
 
 module.exports = {
     publicHandler,
-    homeHandler,
-    createEventHandler,
+    searchHandler,
+  /*  createEventHandler,
     getEventsHandler,
     registerHandler,
     getRegisterHandler,
     createCommentHandler,
     getCommentsHandler,
     createReviewHandler,
-    getReviewsHandler,
+    getReviewsHandler,*/
     errorHandler
 };

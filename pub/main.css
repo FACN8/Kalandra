@@ -15,7 +15,7 @@ header {
     flex-wrap: wrap-reverse;
     justify-content: space-between;
     align-items: center;
-    background: rgb(204, 255, 207);
+    background-color: rgb(204, 255, 207);
 }
 
 .headerlogo {
@@ -57,29 +57,31 @@ header {
 }
 
 .events-container {
-    margin: 1rem;
+    margin: 0;
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: rgb(240, 251, 241);
 }
 
 .search-container {
-    margin: 1rem;
+    margin: 0;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    background-color: rgb(224, 255, 226);
 }
 
 .search-container input:nth-child(1) {
     height: 3rem;
     width: 30%;
     outline: none;
-    border-radius: 100px;
+    border-radius: 1.3rem;
     padding-left: 25px;
-    border: solid black 1px;
+    border: solid rgb(184, 184, 184) 1px;
     margin: 0.5rem;
-    font-size: large;
+    font-size: larger;
     min-width: 300px;
 }
 
@@ -89,11 +91,12 @@ header {
     outline: none;
     margin: 0.5rem;
     cursor: pointer;
-    border-radius: 100px;
+    border-radius: 1.3rem;
     padding-left: 15px;
-    border: solid black 1px;
+    border: solid rgb(184, 184, 184) 1px;
+    background-color: rgb(233, 233, 233);
     margin-right: 1rem;
-    font-size: large;
+    font-size: larger;
 }
 
 .eventitem {
