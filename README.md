@@ -12,6 +12,7 @@ lina took the server side and she built the server.js and the router.js and the 
 
 rabea worked on creating the intial database, building a fictive database as well as schema with the group and worked on creating the documentation for the project, as well as deploying database on othe computers, creating the get data functions
 
+testing
 
 This week's project will involve setting up a database which you connect to via a node.js server. You'll use your data to make a dynamic web app for your front-end.
 
