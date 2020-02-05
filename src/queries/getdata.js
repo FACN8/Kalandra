@@ -7,6 +7,10 @@ const search = (term, cb) =>
             cb(null, result.rows)
         });
 
+/* function returns an array with all the events in
+   the database.
+   @param cb a callback function
+   returns: an array of objects representing events */
 const getEvents = (cb) =>
     dbConnection.query('SELECT * FROM events;',
         (err, result) => {
