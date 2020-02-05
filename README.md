@@ -10,8 +10,9 @@ the group split to work on different aspects of the project, Ivan was responsibl
 
 lina took the server side and she built the server.js and the router.js and the handlers.js defining different functions to be used on the server side to contact the database taking into acount the different queries in the database with rabea and the different fetch requests from the front end with ivan
 
-rabea worked on creating the intial database, building a fictive database as well as schema with the group and worked on creating the documentation for the project
+rabea worked on creating the intial database, building a fictive database as well as schema with the group and worked on creating the documentation for the project, as well as deploying database on othe computers, creating the get data functions
 
+testing
 
 This week's project will involve setting up a database which you connect to via a node.js server. You'll use your data to make a dynamic web app for your front-end.
 
