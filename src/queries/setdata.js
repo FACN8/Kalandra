@@ -47,9 +47,6 @@ const setRegister = (userId, eventId, cb) => {
         }
         ); 
 }
-q
-
-
 
 module.exports = {
     setEvent,
