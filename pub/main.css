@@ -56,6 +56,13 @@ header {
     justify-content: center;
 }
 
+.main-events {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
 .events-container {
     margin: 0;
     display: flex;
@@ -63,6 +70,8 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     background-color: rgb(240, 251, 241);
+    width: 48vw;
+    min-width: 300px;
 }
 
 .search-container {
@@ -100,11 +109,19 @@ header {
 }
 
 .eventitem {
-    border: solid black 1px;
+    border: ridge rgb(245, 245, 245) 2px;
     border-radius: 1rem;
     margin: 1rem;
-    width: 45rem;
-    min-width: 20rem;
+    max-width: 590px;
+    background-color: rgb(227, 255, 229);
+}
+
+#clmn1 {
+    justify-content: flex-end;
+}
+
+#clmn2 {
+    justify-content: flex-start;
 }
 
 .eventitemimg {
@@ -114,4 +131,10 @@ header {
 
 .eventitemspan {
     margin: 1.5rem;
+}
+
+@media only screen and  (max-width: 600px) {
+    .events-container {
+        width: 100vw;
+    }
 }

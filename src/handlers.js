@@ -1,11 +1,8 @@
 const { readFile } = require('fs');
 const path = require('path');
 const qs = require('qs');
-
-/*const getData = require('./queries/getdata.js');
-
-const setData = require('./queries/setData.js');*/
-
+const getData = require('./queries/getdata.js');
+//const setData = require('./queries/setData.js');
 const extensionType = {
     html: { "Content-Type": "text/html" },
     css: { "Content-Type": "text/css" },
@@ -15,7 +12,7 @@ const extensionType = {
     ico: { "Content-Type": "image/x-icon" },
     json: { "Content-Type": "application/json" },
     text: { "Content-Type": "text/plain" }
-  };
+};
 
 const serverError = (err, response) => {
     response.writeHead(500, extensionType[html]);
@@ -36,13 +33,12 @@ const publicHandler = (request, response) => {
 };
 
 const searchHandler = (request, response) => {
-    //get search term, return object of relevant results
     const term = request.url.split('=')[1];
 
     getData.search(term, (error, result) => {
         if (error) new serverError(error, response);
 
-        response.writeHead(200, extensionType[json]);
+        response.writeHead(200, extensionType.json);
         response.end(JSON.stringify(result));
     });
 };
@@ -147,13 +143,13 @@ const errorHandler = response => {
 module.exports = {
     publicHandler,
     searchHandler,
-  /*  createEventHandler,
-    getEventsHandler,
-    registerHandler,
-    getRegisterHandler,
-    createCommentHandler,
-    getCommentsHandler,
-    createReviewHandler,
-    getReviewsHandler,*/
+    /*  createEventHandler,
+      getEventsHandler,
+      registerHandler,
+      getRegisterHandler,
+      createCommentHandler,
+      getCommentsHandler,
+      createReviewHandler,
+      getReviewsHandler,*/
     errorHandler
 };
