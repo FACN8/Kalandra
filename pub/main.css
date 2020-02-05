@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+* {
+    font-family: Dosis, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: rgb(246, 255, 246);
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(204, 255, 207);
+}
+
+.headerlogo {
+    padding: 1rem;
+    margin-right: 1rem;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.navlist {
+    width: 100%;
+    display: flex;
+    padding: 0;
+    flex-direction: row;
+    list-style: none;
+}
+
+.navitem {
+    margin-left: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 40px;
+    transition: 0.3s;
+}
+
+.navitem:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.events-container {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-container input:nth-child(1) {
+    height: 3rem;
+    width: 30%;
+    outline: none;
+    border-radius: 100px;
+    padding-left: 25px;
+    border: solid black 1px;
+    margin: 0.5rem;
+    font-size: large;
+    min-width: 300px;
+}
+
+.search-container input:nth-child(2) {
+    height: 3rem;
+    width: 10rem;
+    outline: none;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 100px;
+    padding-left: 15px;
+    border: solid black 1px;
+    margin-right: 1rem;
+    font-size: large;
+}
+
+.eventitem {
+    border: solid black 1px;
+    border-radius: 1rem;
+    margin: 1rem;
+    width: 45rem;
+    min-width: 20rem;
+}
+
+.eventitemimg {
+    border-radius: 1rem 1rem 0 0;
+    width: 100%;
+}
+
+.eventitemspan {
+    margin: 1.5rem;
+}
