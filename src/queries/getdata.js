@@ -1,16 +1,18 @@
 const dbConnection = require('../../db/db_connection');
 
-const search = (term, cb) =>
-    dbConnection.query('SELECT * FROM events WHERE title LIKE $1 OR descr LIKE $2;', ['%' + term + '%', '%' + term + '%'],
-        (err, result) => {
-            if (err) return cb(err)
-            cb(null, result.rows)
-        });
-
 /* function returns an array with all the events in
    the database.
    @param cb a callback function
    returns: an array of objects representing events */
+const search = (term, cb) => {
+    const query = 'SELECT * FROM events WHERE Upper(title) LIKE $1 OR Upper(descr) LIKE $2;';
+    dbConnection.query(query, ['%' + term.toUpperCase() + '%', '%' + term.toUpperCase() + '%'], (err, result) => {
+        if (err) return cb(err);
+        cb(null, result.rows);
+    });
+};
+
+
 const getEvents = (cb) =>
     dbConnection.query('SELECT * FROM events;',
         (err, result) => {
@@ -38,7 +40,6 @@ const getReviews = (eventId, cb) =>
             cb(null, result.rows)
         });
 
-
 const getRegister = (eventId, cb) =>
     dbConnection.query(
         'SELECT users.username FROM attend join users on attend.user_id ' +
@@ -49,9 +50,9 @@ const getRegister = (eventId, cb) =>
         });
 
 module.exports = {
-    search,
-    getEvents,
+    search
+    /*getEvents,
     getComments,
     getReviews,
-    getRegister
+    getRegister*/
 };
