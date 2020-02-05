@@ -2,7 +2,7 @@ const { readFile } = require('fs');
 const path = require('path');
 const qs = require('qs');
 const getData = require('./queries/getdata.js');
-//const setData = require('./queries/setData.js');
+const setData = require('./queries/setdata.js');
 const extensionType = {
     html: { "Content-Type": "text/html" },
     css: { "Content-Type": "text/css" },
@@ -42,7 +42,7 @@ const searchHandler = (request, response) => {
         response.end(JSON.stringify(result));
     });
 };
-/*
+
 const createEventHandler = (request, response) => {
     let data = '';
     request.on('data', chunk => {
@@ -133,7 +133,7 @@ const getReviewsHandler = response => {
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
     });
-};*/
+};
 
 const errorHandler = response => {
     response.writeHead(404, { 'content-type': 'text/html' });
@@ -143,13 +143,13 @@ const errorHandler = response => {
 module.exports = {
     publicHandler,
     searchHandler,
-    /*  createEventHandler,
-      getEventsHandler,
-      registerHandler,
-      getRegisterHandler,
-      createCommentHandler,
-      getCommentsHandler,
-      createReviewHandler,
-      getReviewsHandler,*/
+    createEventHandler,
+    getEventsHandler,
+    registerHandler,
+    getRegisterHandler,
+    createCommentHandler,
+    getCommentsHandler,
+    createReviewHandler,
+    getReviewsHandler,
     errorHandler
 };

@@ -50,9 +50,9 @@ const getRegister = (eventId, cb) =>
         });
 
 module.exports = {
-    search
-    /*getEvents,
+    search,
+    getEvents,
     getComments,
     getReviews,
-    getRegister*/
+    getRegister
 };
