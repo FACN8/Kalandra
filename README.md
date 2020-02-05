@@ -6,6 +6,12 @@ Events Calender for Founders and Coders
 We started our project by setting up the file structure, later on we started defining minimum viable product, while reading together the requirement and creating issues based on groupthinking. we then started imagining and defining front end side. and later on we made a diagram out of the databses.
 https://dbdiagram.io/d/5e3961ff9e76504e0ef102cf
 
+the group split to work on different aspects of the project, Ivan was responsible on making the front end side including mobile first design and structure, and basic functionality in the front end
+
+lina took the server side and she built the server.js and the router.js and the handlers.js defining different functions to be used on the server side to contact the database taking into acount the different queries in the database with rabea and the different fetch requests from the front end with ivan
+
+rabea worked on creating the intial database, building a fictive database as well as schema with the group and worked on creating the documentation for the project
+
 
 This week's project will involve setting up a database which you connect to via a node.js server. You'll use your data to make a dynamic web app for your front-end.
 
