@@ -14,7 +14,14 @@ rabea worked on creating the intial database, building a fictive database as wel
 
 testing
 
-This week's project will involve setting up a database which you connect to via a node.js server. You'll use your data to make a dynamic web app for your front-end.
+### How to set up & build:
+- Clone this repo
+- Create a database as follows on your machine: `CREATE DATABASE namesloc;`
+- `cd` into it and run `npm i`
+- Run this command to build database tables: `npm run build:db`
+- Create file `.env` and ask us for the variable `DB_URL` contents
+- Run server with `npm start`
+- Access the website on localhost:[port]
 
 ### Requirements
 

@@ -69,13 +69,13 @@ const searchEvents = (event) => {
     const url = '/search?term=' + searchForm.childNodes[1].value;
 
     fetchData(url, (error, response) => {
-
+        
         if (!response || error || response.length === 0) {
             searchForm.childNodes[1].value = '';
             alert('No results found');
-            setTimeout(function () {
-                window.location.href = 'https://stayhipp.com/wp-content/uploads/2019/11/redditucybercreeper101.jpg';
-            }, 0);
+            //setTimeout(function () {
+            //    window.location.href = 'https://stayhipp.com/wp-content/uploads/2019/11/redditucybercreeper101.jpg';
+            //}, 0);
             return;
         }
 

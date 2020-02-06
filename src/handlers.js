@@ -1,6 +1,7 @@
 const { readFile } = require('fs');
 const path = require('path');
 const qs = require('querystring');
+const urlmod = require('url');
 const getData = require('./queries/getdata.js');
 const setData = require('./queries/setdata.js');
 const extensionType = {
@@ -33,13 +34,12 @@ const publicHandler = (request, response) => {
 };
 
 const searchHandler = (request, response) => {
-    const term = request.url.split('=')[1];
-
-    getData.search(term, (error, result) => {
-        if (error) new serverError(error, response);
-
-        response.writeHead(200, extensionType.json);
-        response.end(JSON.stringify(result));
+    let term = qs.parse(urlmod.parse(request.url).query);
+  
+    getData.search(term.term, (err, event) => {
+        if (err) return serverError(err, response);
+        response.writeHead(200, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify(event));
     });
 };
 
