@@ -21,7 +21,7 @@ testing
 - Run this command to build database tables: `npm run build:db`
 - Create file `.env` and ask us for the variable `DB_URL` contents
 - Run server with `npm start`
-- Access the website on localhost:<port>
+- Access the website on localhost:port
 
 ### Requirements
 
