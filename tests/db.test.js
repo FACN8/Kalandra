@@ -80,3 +80,4 @@ tape('Testing register table and getting the registered ', (t) => {
         })
     })
 })
+
