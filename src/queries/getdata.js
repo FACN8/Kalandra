@@ -12,7 +12,6 @@ const search = (term, cb) => {
     });
 };
 
-
 const getEvents = (cb) =>
     dbConnection.query('SELECT * FROM events;',
         (err, result) => {

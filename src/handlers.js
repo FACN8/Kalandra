@@ -1,6 +1,6 @@
 const { readFile } = require('fs');
 const path = require('path');
-const qs = require('qs');
+const qs = require('querystring');
 const getData = require('./queries/getdata.js');
 const setData = require('./queries/setdata.js');
 const extensionType = {
@@ -15,7 +15,7 @@ const extensionType = {
 };
 
 const serverError = (err, response) => {
-    response.writeHead(500, extensionType[html]);
+    response.writeHead(500, extensionType.html);
     response.end('<h1>Sorry, there was a problem loading the homepage</h1>');
     console.log(err);
 };
@@ -45,15 +45,17 @@ const searchHandler = (request, response) => {
 
 const createEventHandler = (request, response) => {
     let data = '';
+
     request.on('data', chunk => {
         data += chunk;
     });
+
     request.on('end', () => {
-        const { title, pic, date, descr } = qs.parse(data);
-        setEvent(title, pic, date, descr, err => {
+        const parsed = JSON.parse(data);
+        setData.setEvent(parsed.pic, parsed.title, parsed.date, parsed.descr, (err, res) => {
             if (err) return serverError(err, response);
-            response.writeHead(201, { 'Location': '/' }); //change it to go to event page
-            response.end()
+            response.writeHead(200, extensionType.json);
+            response.end(JSON.stringify(res));
         });
     });
 };

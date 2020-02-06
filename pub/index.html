@@ -14,13 +14,13 @@
         <div class="nav-container">
             <nav>
                 <ul class="navlist">
-                    <li class="homenav navitem">
+                    <li id="home" class="homenav navitem">
                         HOME
                     </li>
-                    <li class="historynav navitem">
+                    <li id="history" class="historynav navitem">
                         HISTORY
                     </li>
-                    <li class="postnav navitem">
+                    <li id="post" class="postnav navitem">
                         POST
                     </li>
                 </ul>
@@ -32,10 +32,19 @@
             </h1>
         </div>
     </header>
+    <div id="create-event-container">
+        <form id="create-event-form" class="create-event-container">
+            <input type="text" name="Image URL" autocomplete="off" placeholder="Image URL" />
+            <input type="text" name="Event title" autocomplete="off" placeholder="Event title" />
+            <input type="date" name="Event date" autocomplete="off" placeholder="Event date" />
+            <input type="text" name="Event description" autocomplete="off" placeholder="Event description" />
+            <input type="submit" name="Create event" value="Create event" />
+        </form>
+    </div>
     <div class="main">
         <form class="search-container" id="searchform">
             <input type="text" name="Search Event" autocomplete="off" placeholder="Search for events" />
-            <input type="submit" name="Search" />
+            <input type="submit" name="Search" value="Search" />
         </form>
         <div class="main-events">
             <div id="clmn1" class="events-container"></div>
@@ -43,6 +52,7 @@
         </div>
 
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../pub/app.js"></script>
 </body>
 

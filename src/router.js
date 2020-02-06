@@ -12,8 +12,8 @@ const router = (request, response) => {
         handlers.searchHandler(request, response);
     } else if (request.url === '/browse') {
         handlers.getEventsHandler(response);
-    } else if (request.url === '/create-event') {
-        handlers.createEventHandler(response);
+    } else if (request.url.includes('create-event')) {
+        handlers.createEventHandler(request, response);
     } else if (request.url === '/register') {
         handlers.registerHandler(response);
     } else if (request.url === '/attendees') {
