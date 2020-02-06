@@ -10,7 +10,7 @@ const router = (request, response) => {
         handlers.publicHandler(request, response);
     } else if (request.url.includes('/search?')) {
         handlers.searchHandler(request, response);
-    }/* else if (request.url === '/browse') {
+    } else if (request.url === '/browse') {
         handlers.getEventsHandler(response);
     } else if (request.url === '/create-event') {
         handlers.createEventHandler(response);
@@ -26,7 +26,7 @@ const router = (request, response) => {
         handlers.createReviewHandler(response);
     } else if (request.url === '/reviews') {
         handlers.getReviewsHandler(response);
-    } */else {
+    } else {
         handlers.errorHandler(response);
     }
 };

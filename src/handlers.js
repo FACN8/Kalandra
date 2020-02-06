@@ -2,7 +2,7 @@ const { readFile } = require('fs');
 const path = require('path');
 const qs = require('qs');
 const getData = require('./queries/getdata.js');
-//const setData = require('./queries/setData.js');
+const setData = require('./queries/setdata.js');
 const extensionType = {
     html: { "Content-Type": "text/html" },
     css: { "Content-Type": "text/css" },
@@ -42,7 +42,7 @@ const searchHandler = (request, response) => {
         response.end(JSON.stringify(result));
     });
 };
-/*
+
 const createEventHandler = (request, response) => {
     let data = '';
     request.on('data', chunk => {
@@ -50,7 +50,7 @@ const createEventHandler = (request, response) => {
     });
     request.on('end', () => {
         const { title, pic, date, descr } = qs.parse(data);
-        setEvent(title, pic, date, descr, err => {
+        setData.setEvent(title, pic, date, descr, err => {
             if (err) return serverError(err, response);
             response.writeHead(201, { 'Location': '/' }); //change it to go to event page
             response.end()
@@ -59,7 +59,7 @@ const createEventHandler = (request, response) => {
 };
 
 const getEventsHandler = response => {
-    getEvents((err, event) => {
+    getData.getEvents((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
@@ -73,7 +73,7 @@ const registerHandler = (request, response) => {
     });
     request.on('end', () => {
         const { userId, eventId } = qs.parse(data);
-        setRegister(userId, eventId, err => {
+        setData.setRegister(userId, eventId, err => {
             if (err) return serverError(err, response);
             response.writeHead(201, { 'Location': '/' });
             response.end()
@@ -82,7 +82,7 @@ const registerHandler = (request, response) => {
 };
 
 const getRegisterHandler = response => {
-    getRegister((err, event) => {
+    getData.getRegister((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
@@ -96,7 +96,7 @@ const createCommentHandler = (request, response) => {
     });
     request.on('end', () => {
         const { userId, eventId, comtext } = qs.parse(data);
-        setComment(userId, eventId, comtext, err => {
+        setData.setComment(userId, eventId, comtext, err => {
             if (err) return serverError(err, response);
             response.writeHead(201, { 'Location': '/' });
             response.end()
@@ -105,7 +105,7 @@ const createCommentHandler = (request, response) => {
 };
 
 const getCommentsHandler = response => {
-    getComments((err, event) => {
+    getData.getComments((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
@@ -119,7 +119,7 @@ const createReviewHandler = (request, response) => {
     });
     request.on('end', () => {
         const { userId, eventId, revtext } = qs.parse(data);
-        setReview(userId, eventId, revtext, err => {
+        setData.setReview(userId, eventId, revtext, err => {
             if (err) return serverError(err, response);
             response.writeHead(201, { 'Location': '/' });
             response.end()
@@ -128,12 +128,12 @@ const createReviewHandler = (request, response) => {
 };
 
 const getReviewsHandler = response => {
-    getReviews((err, event) => {
+    getData.getReviews((err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
     });
-};*/
+};
 
 const errorHandler = response => {
     response.writeHead(404, { 'content-type': 'text/html' });
@@ -143,13 +143,13 @@ const errorHandler = response => {
 module.exports = {
     publicHandler,
     searchHandler,
-    /*  createEventHandler,
-      getEventsHandler,
-      registerHandler,
-      getRegisterHandler,
-      createCommentHandler,
-      getCommentsHandler,
-      createReviewHandler,
-      getReviewsHandler,*/
+    createEventHandler,
+    getEventsHandler,
+    registerHandler,
+    getRegisterHandler,
+    createCommentHandler,
+    getCommentsHandler,
+    createReviewHandler,
+    getReviewsHandler,
     errorHandler
 };
