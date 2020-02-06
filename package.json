@@ -10,7 +10,8 @@
         "test": "NODE_ENV=test node tests/db.test.js",
         "dev": "nodemon src/server.js",
         "start": "node src/server.js",
-        "build:db": "NODE_ENV=development node ./db/db_build.js"
+        "build:db": "NODE_ENV=development node ./db/db_build.js",
+        "handlers_test": "nodemon tests/handlers.test.js"
     },
   "repository": {
     "type": "git",
