@@ -1,6 +1,6 @@
 const { readFile } = require('fs');
 const path = require('path');
-const qs = require('qs');
+const qs = require('querystring');
 const getData = require('./queries/getdata.js');
 //const setData = require('./queries/setData.js');
 const extensionType = {
