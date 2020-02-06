@@ -28,9 +28,9 @@ const searchEvents = (event) => {
         if (!response || error || response.length === 0) {
             form.childNodes[1].value = '';
             alert('No results found');
-            setTimeout(function () {
-                window.location.href = 'https://stayhipp.com/wp-content/uploads/2019/11/redditucybercreeper101.jpg';
-            }, 0);
+            //setTimeout(function () {
+            //    window.location.href = 'https://stayhipp.com/wp-content/uploads/2019/11/redditucybercreeper101.jpg';
+            //}, 0);
             return;
         }
 
