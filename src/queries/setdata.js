@@ -7,9 +7,9 @@ const dbConnection = require('../../db/db_connection.js');
    @param descr the description for the event
    @param cb a callback function
    returns an array of objects representing events */
-const setEvent = (title, pic, date, descr, cb) => {
+const setEvent = (pic, title, date, descr, cb) => {
     dbConnection.query(
-        'INSERT INTO events (title, pic, date, descr) VALUES ($1, $2, $3, $4)', [title, pic, date, descr],
+        'INSERT INTO events (pic, title, date, descr) VALUES ($1, $2, $3, $4)', [pic, title, date, descr],
         (err, res) => {
             if (err) return cb(err);
             cb(null, res);
@@ -55,4 +55,4 @@ module.exports = {
     setComment,
     setReview,
     setRegister
-};*/
+};

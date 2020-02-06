@@ -12,7 +12,6 @@ const search = (term, cb) => {
     });
 };
 
-
 const getEvents = (cb) =>
     dbConnection.query('SELECT * FROM events;',
         (err, result) => {
@@ -50,9 +49,9 @@ const getRegister = (eventId, cb) =>
         });
 
 module.exports = {
-    search
-    /*getEvents,
+    search,
+    getEvents,
     getComments,
     getReviews,
-    getRegister*/
+    getRegister
 };

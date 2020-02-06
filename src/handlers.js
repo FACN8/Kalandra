@@ -3,7 +3,7 @@ const path = require('path');
 const qs = require('querystring');
 const urlmod = require('url');
 const getData = require('./queries/getdata.js');
-//const setData = require('./queries/setData.js');
+const setData = require('./queries/setdata.js');
 const extensionType = {
     html: { "Content-Type": "text/html" },
     css: { "Content-Type": "text/css" },
@@ -35,24 +35,27 @@ const publicHandler = (request, response) => {
 
 const searchHandler = (request, response) => {
     let term = qs.parse(urlmod.parse(request.url).query);
+  
     getData.search(term.term, (err, event) => {
         if (err) return serverError(err, response);
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
     });
 };
-/*
+
 const createEventHandler = (request, response) => {
     let data = '';
+
     request.on('data', chunk => {
         data += chunk;
     });
+
     request.on('end', () => {
-        const { title, pic, date, descr } = qs.parse(data);
-        setEvent(title, pic, date, descr, err => {
+        const parsed = JSON.parse(data);
+        setData.setEvent(parsed.pic, parsed.title, parsed.date, parsed.descr, (err, res) => {
             if (err) return serverError(err, response);
-            response.writeHead(201, { 'Location': '/' }); //change it to go to event page
-            response.end()
+            response.writeHead(200, extensionType.json);
+            response.end(JSON.stringify(res));
         });
     });
 };
@@ -132,7 +135,7 @@ const getReviewsHandler = response => {
         response.writeHead(200, { 'Content-Type': 'application/json' });
         response.end(JSON.stringify(event));
     });
-};*/
+};
 
 const errorHandler = response => {
     response.writeHead(404, { 'content-type': 'text/html' });
@@ -142,13 +145,13 @@ const errorHandler = response => {
 module.exports = {
     publicHandler,
     searchHandler,
-    /*  createEventHandler,
-      getEventsHandler,
-      registerHandler,
-      getRegisterHandler,
-      createCommentHandler,
-      getCommentsHandler,
-      createReviewHandler,
-      getReviewsHandler,*/
+    createEventHandler,
+    getEventsHandler,
+    registerHandler,
+    getRegisterHandler,
+    createCommentHandler,
+    getCommentsHandler,
+    createReviewHandler,
+    getReviewsHandler,
     errorHandler
 };
