@@ -36,7 +36,7 @@ const searchHandler = (request, response) => {
     const term = request.url.split('=')[1];
 
     getData.search(term, (error, result) => {
-        if (error) new serverError(error, response);
+        if (error) serverError(error, response);
 
         response.writeHead(200, extensionType.json);
         response.end(JSON.stringify(result));
