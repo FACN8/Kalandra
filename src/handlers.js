@@ -15,7 +15,7 @@ const extensionType = {
 };
 
 const serverError = (err, response) => {
-    response.writeHead(500, extensionType[html]);
+    response.writeHead(500, extensionType.html);
     response.end('<h1>Sorry, there was a problem loading the homepage</h1>');
     console.log(err);
 };
